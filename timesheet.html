@@ -493,7 +493,16 @@
 
 <li class="menu-title">
 <span>HR</span>
+<li class="submenu">
+  <a href="#"><i class="la la-money"></i> <span> Leave </span> <span class="menu-arrow"></span></a>
+  <ul>
+  <li><a href="salary.html"> Leave Apply </a></li>
+  <li><a href="salary-view.html"> Leave Balances </a></li>
+  <li><a href="payroll-items.html"> Leave Calender </a></li>
+  <li><a href="payroll-items.html"> Calendar Hoilday </a></li>
 
+  </ul>
+  </li>
 
 <li class="submenu">
 <a href="#"><i class="la la-money"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
@@ -1115,8 +1124,11 @@ library_add_check
 <li class="breadcrumb-item active">Timesheet</li>
 </ul>
 </div>
+<!-- Add Today Work Button -->
 <div class="col-auto float-end ms-auto">
-<a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_todaywork"><i class="fa-solid fa-plus"></i> Add Today Work</a>
+  <a href="#" class="btn add-btn" data-bs-toggle="offcanvas" data-bs-target="#add_todaywork" aria-controls="add_todaywork">
+      <i class="fa-solid fa-plus"></i> Add Today Work
+  </a>
 </div>
 </div>
 </div>
@@ -1299,7 +1311,10 @@ library_add_check
 <div class="dropdown dropdown-action">
 <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 <div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_todaywork"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
+<!-- Edit Work Button -->
+<a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#edit_todaywork">
+  <i class="fa-solid fa-pencil m-r-5"></i> Edit
+</a>
 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_workdetail"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
 </div>
 </div>
@@ -1433,132 +1448,151 @@ library_add_check
 </div>
 
 
-<div id="add_todaywork" class="modal custom-modal fade" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Add Today Work details</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<form>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Project <span class="text-danger">*</span></label>
-<select class="select">
-<option>Office Management</option>
-<option>Project Management</option>
-<option>Video Calling App</option>
-<option>Hospital Useristration</option>
-</select>
-</div>
-</div>
-<div class="row">
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Deadline <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control" type="text" value="5 May 2024" readonly>
-</div>
-</div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="100" readonly>
-</div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="60" readonly>
-</div>
-</div>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Date <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control datetimepicker" type="text">
-</div>
-</div>
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text">
-</div>
-</div>
-<div class="input-block mb-3">
-<label class="col-form-label">Description <span class="text-danger">*</span></label>
-<textarea rows="4" class="form-control"></textarea>
-</div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Submit</button>
-</div>
-</form>
-</div>
-</div>
-</div>
+<!-- Add Today Work Button -->
+
+
+<!-- Full-Screen Off-Canvas -->
+<style>
+  .custom-offcanvas {
+    height: 100vh;
+    width: 60%;
+}
+
+</style>
+
+<!-- Full-Screen Off-Canvas with 60% Width -->
+<div class="offcanvas offcanvas-end" id="add_todaywork" aria-labelledby="addTodayWorkLabel" style="height: 100vh; width: 60%;">
+  <div class="offcanvas-header">
+      <h5 id="addTodayWorkLabel" class="offcanvas-title">Add Today Work Details</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+      <form>
+          <div class="row">
+              <div class="input-block mb-3 col-sm-6">
+                  <label class="col-form-label">Project <span class="text-danger">*</span></label>
+                  <select class="form-select">
+                      <option>Office Management</option>
+                      <option>Project Management</option>
+                      <option>Video Calling App</option>
+                      <option>Hospital Useristration</option>
+                  </select>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-block mb-3 col-sm-4">
+                  <label class="col-form-label">Deadline <span class="text-danger">*</span></label>
+                  <div class="cal-icon">
+                      <input class="form-control" type="text" value="5 May 2024" readonly>
+                  </div>
+              </div>
+              <div class="input-block mb-3 col-sm-4">
+                  <label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" value="100" readonly>
+              </div>
+              <div class="input-block mb-3 col-sm-4">
+                  <label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" value="60" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-block mb-3 col-sm-6">
+                  <label class="col-form-label">Date <span class="text-danger">*</span></label>
+                  <div class="cal-icon">
+                      <input class="form-control datetimepicker" type="text">
+                  </div>
+              </div>
+              <div class="input-block mb-3 col-sm-6">
+                  <label class="col-form-label">Hours <span class="text-danger">*</span></label>
+                  <input class="form-control" type="text">
+              </div>
+          </div>
+          <div class="input-block mb-3">
+              <label class="col-form-label">Description <span class="text-danger">*</span></label>
+              <textarea rows="4" class="form-control"></textarea>
+          </div>
+          <div class="submit-section">
+              <button class="btn btn-primary submit-btn">Submit</button>
+          </div>
+      </form>
+  </div>
 </div>
 
 
-<div id="edit_todaywork" class="modal custom-modal fade" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Edit Work Details</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+
+<!-- Edit Work Button -->
+
+
+<!-- Off-Canvas for Editing Work Details -->
+<div class="offcanvas offcanvas-end custom-offcanvas1" id="edit_todaywork" tabindex="-1" aria-labelledby="editTodayWorkLabel" style="height: 100vh; width: 60%;">
+<div class="offcanvas-header">
+    <h5 id="editTodayWorkLabel" class="offcanvas-title">Edit Work Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
-<div class="modal-body">
-<form>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Project <span class="text-danger">*</span></label>
-<select class="select">
-<option>Office Management</option>
-<option>Project Management</option>
-<option>Video Calling App</option>
-<option>Hospital Useristration</option>
-</select>
+<div class="offcanvas-body">
+    <form>
+        <div class="row">
+            <div class="input-block mb-3 col-sm-6">
+                <label class="col-form-label">Project <span class="text-danger">*</span></label>
+                <select class="form-select">
+                    <option>Office Management</option>
+                    <option>Project Management</option>
+                    <option>Video Calling App</option>
+                    <option>Hospital Useristration</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-block mb-3 col-sm-4">
+                <label class="col-form-label">Deadline <span class="text-danger">*</span></label>
+                <div class="cal-icon">
+                    <input class="form-control" type="text" value="5 May 2024" readonly>
+                </div>
+            </div>
+            <div class="input-block mb-3 col-sm-4">
+                <label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" value="100" readonly>
+            </div>
+            <div class="input-block mb-3 col-sm-4">
+                <label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" value="60" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-block mb-3 col-sm-6">
+                <label class="col-form-label">Date <span class="text-danger">*</span></label>
+                <div class="cal-icon">
+                    <input class="form-control datetimepicker" value="03/03/2024" type="text">
+                </div>
+            </div>
+            <div class="input-block mb-3 col-sm-6">
+                <label class="col-form-label">Hours <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" value="9">
+            </div>
+        </div>
+        <div class="input-block mb-3">
+            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+            <textarea rows="4" class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel elit neque.</textarea>
+        </div>
+        <div class="submit-section">
+            <button class="btn btn-primary submit-btn">Save</button>
+        </div>
+    </form>
 </div>
 </div>
-<div class="row">
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Deadline <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control" type="text" value="5 May 2024" readonly>
-</div>
-</div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="100" readonly>
-</div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="60" readonly>
-</div>
-</div>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Date <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control datetimepicker" value="03/03/2024" type="text">
-</div>
-</div>
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="9">
-</div>
-</div>
-<div class="input-block mb-3">
-<label class="col-form-label">Description <span class="text-danger">*</span></label>
-<textarea rows="4" class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel elit neque.</textarea>
-</div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Save</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Custom CSS to adjust Off-Canvas to Full-Screen -->
+<style>
+.custom-offcanvas1 {
+    width: 100%;  /* Full-screen width */
+    height: 100vh; /* Full-screen height */
+    max-width: 100%; /* Ensures it doesn't exceed screen size */
+}
+
+</style>
+
+
+
 
 
 <div class="modal custom-modal fade" id="delete_workdetail" role="dialog">

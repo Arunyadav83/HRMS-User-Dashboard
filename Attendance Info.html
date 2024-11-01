@@ -438,6 +438,11 @@ h6 {
     background: #f1f1f1; /* Scrollbar track color */
 }
 
+    .nine-hours {
+        background-color: green;
+        color: white;
+    }
+
     </style>
 
    
@@ -1651,9 +1656,9 @@ h6 {
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h5>Attendance Info</h5>
                     <div class="d-flex align-items-center">
-                        <!-- <a href="#" class="text-secondary me-3">Quick Links</a> -->
-                        <button class="btn btn-primary">My Regularizations</button>
+                        <a href="regularization.html" class="btn btn-primary">My Regularizations</a>
                     </div>
+                    
                     <!-- <div class="aler alert-warnin  w-25 ">
                         <span style="white-space: nowrap;"><i class="bi bi-exclamation-circle-fill me-2 text-danger"></i>1 gap(s) in attendance</span>
                         <a href="#" class="btn btn-links text-primary">Regularize</a>
@@ -2030,47 +2035,57 @@ h6 {
                 const monthNames = ["January", "February", "March", "April", "May", "June",
                     "July", "August", "September", "October", "November", "December"];
                 let currentDate = new Date();
-        
+            
                 function renderCalendar(date) {
                     const month = date.getMonth();
                     const year = date.getFullYear();
                     const firstDay = new Date(year, month, 1).getDay();
                     const lastDate = new Date(year, month + 1, 0).getDate();
                     const prevLastDate = new Date(year, month, 0).getDate();
-        
                     const calendarBody = document.getElementById('calendarBody');
                     calendarBody.innerHTML = '';
-        
-                    // Display month and year
                     document.getElementById('monthYear').textContent = `${monthNames[month]} ${year}`;
-        
                     let dateNum = 1;
-                    let prevMonthDates = prevLastDate - firstDay + 1; // Dates from the previous month
+                    let prevMonthDates = prevLastDate - firstDay + 1;
                     let nextMonthDates = 1;
-        
-                    for (let i = 0; i < 6; i++) { // Maximum 6 rows
+            
+                    for (let i = 0; i < 6; i++) {
                         let row = document.createElement('tr');
-        
-                        for (let j = 0; j < 7; j++) { // 7 days in a week
+            
+                        for (let j = 0; j < 7; j++) {
                             let cell = document.createElement('td');
-        
+            
                             if (i === 0 && j < firstDay) {
-                                // Fill in previous month's dates
                                 cell.textContent = prevMonthDates++;
                                 cell.classList.add('other-month');
                             } else if (dateNum > lastDate) {
-                                // Fill in next month's dates
                                 cell.textContent = nextMonthDates++;
                                 cell.classList.add('other-month');
                             } else {
-                                // Fill in current month's dates
                                 cell.textContent = dateNum;
+                                const fullDate = `${year}-${month + 1}-${dateNum}`;
+                                
                                 if (new Date().toDateString() === new Date(year, month, dateNum).toDateString()) {
-                                    cell.classList.add('current-date'); // Highlight current date
+                                    cell.classList.add('current-date');
                                 }
-                                if (j === 0 || j === 6) { // Highlight weekends
+                                if (j === 0 || j === 6) {
                                     cell.classList.add('weekend');
                                 }
+                                
+                                // Retrieve punch-in and punch-out times for the date
+                                const activityLog = JSON.parse(localStorage.getItem("activityLog")) || [];
+                                const dayActivities = activityLog.filter(activity => activity.date === fullDate);
+            
+                                if (dayActivities.length >= 2) {
+                                    const punchIn = new Date(dayActivities[0].time);
+                                    const punchOut = new Date(dayActivities[1].time);
+                                    const hoursWorked = (punchOut - punchIn) / (1000 * 60 * 60); // Convert to hours
+                                    
+                                    if (hoursWorked >= 9) {
+                                        cell.classList.add('nine-hours'); // Highlight for 9+ hours
+                                    }
+                                }
+            
                                 dateNum++;
                             }
                             row.appendChild(cell);
@@ -2078,17 +2093,17 @@ h6 {
                         calendarBody.appendChild(row);
                     }
                 }
-        
+            
                 document.getElementById('prev').addEventListener('click', () => {
                     currentDate.setMonth(currentDate.getMonth() - 1);
                     renderCalendar(currentDate);
                 });
-        
+            
                 document.getElementById('next').addEventListener('click', () => {
                     currentDate.setMonth(currentDate.getMonth() + 1);
                     renderCalendar(currentDate);
                 });
-        
+            
                 renderCalendar(currentDate); // Initial render
             </script>
         

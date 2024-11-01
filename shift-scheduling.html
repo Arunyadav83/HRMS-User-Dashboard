@@ -1128,7 +1128,7 @@ library_add_check
 </div>
 <div class="col-auto float-end ms-auto">
 <a href="shift-list.html" class="btn add-btn m-r-5">Shifts</a>
-<a href="#" class="btn add-btn m-r-5" data-bs-toggle="modal" data-bs-target="#add_schedule"> Assign Shifts</a>
+<a href="#" class="btn add-btn m-r-5" data-bs-toggle="offcanvas" data-bs-target="#add_schedule_offcanvas" aria-controls="add_schedule_offcanvas">Assign Shifts</a>
 </div>
 </div>
 </div>
@@ -1666,7 +1666,7 @@ library_add_check
 <td>
 <div class="user-add-shedule-list">
 <h2>
-<a href="#" data-bs-toggle="modal" data-bs-target="#edit_schedule" class="green-border">
+<a href="#" data-bs-toggle="offcanvas" data-bs-target="#editScheduleOffcanvas" aria-controls="editScheduleOffcanvas">
 <span class="username-info m-b-10">6:30 am - 9:30 pm ( 14 hrs 15 mins)</span>
 <span class="userrole-info">Web Designer - SMARTHR</span>
 </a>
@@ -1744,311 +1744,318 @@ library_add_check
 </div>
 
 
-<div id="add_schedule" class="modal custom-modal fade" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Add Schedule</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<form>
-<div class="row">
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Department <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select</option>
-<option value>Development</option>
-<option value="1">Finance</option>
-<option value="2">Finance and Management</option>
-<option value="3">Hr & Finance</option>
-<option value="4">ITech</option>
-</select>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Employee Name <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select </option>
-<option value="1">Richard Miles </option>
-<option value="2">John Smith</option>
-<option value="3">Mike Litorus </option>
-<option value="4">Wilmer Deluna</option>
-</select>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Date</label>
-<div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Shifts <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select </option>
-<option value="1">10'o clock Shift</option>
-<option value="2">10:30 shift</option>
-<option value="3">Daily Shift </option>
-<option value="4">New Shift</option>
-</select>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Min Start Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Start Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Max Start Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Min End Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">End Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Max End Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
-</div>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Break Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text">
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3">
-<label class="col-form-label">Accept Extra Hours </label>
-<div class="form-check form-switch">
-<input type="checkbox" class="form-check-input" id="customSwitch1" checked>
-<label class="form-check-label" for="customSwitch1"></label>
-</div>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3">
-<label class="col-form-label">Publish </label>
-<div class="form-check form-switch">
-<input type="checkbox" class="form-check-input" id="customSwitch2" checked>
-<label class="form-check-label" for="customSwitch2"></label>
-</div>
-</div>
-</div>
-</div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Submit</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
+<!-- Button to open the off-canvas -->
 
 
-<div id="edit_schedule" class="modal custom-modal fade" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Edit Schedule</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+<!-- Full-Screen Off-Canvas -->
+<div class="offcanvas offcanvas-end offcanvas-fullscreen" tabindex="-1" id="add_schedule_offcanvas" aria-labelledby="addScheduleOffcanvasLabel" style="height: 100vh; width: 60%;">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="addScheduleOffcanvasLabel">Add Schedule</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Department <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option value>Development</option>
+              <option value="1">Finance</option>
+              <option value="2">Finance and Management</option>
+              <option value="3">Hr & Finance</option>
+              <option value="4">ITech</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Employee Name <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option value="1">Richard Miles</option>
+              <option value="2">John Smith</option>
+              <option value="3">Mike Litorus</option>
+              <option value="4">Wilmer Deluna</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Date</label>
+            <div class="cal-icon">
+              <input class="form-control datetimepicker" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Shifts <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option value="1">10'o clock Shift</option>
+              <option value="2">10:30 shift</option>
+              <option value="3">Daily Shift</option>
+              <option value="4">New Shift</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Time Pickers for Start and End Times -->
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Min Start Time <span class="text-danger">*</span></label>
+            <div class="input-group time">
+              <input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Start Time <span class="text-danger">*</span></label>
+            <div class="input-group time">
+              <input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Max Start Time <span class="text-danger">*</span></label>
+            <div class="input-group time">
+              <input class="form-control timepicker"><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Break Time and Extra Hours -->
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Break Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text">
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Accept Extra Hours</label>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="customSwitch1" checked>
+              <label class="form-check-label" for="customSwitch1"></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Publish</label>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="customSwitch2" checked>
+              <label class="form-check-label" for="customSwitch2"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-section">
+        <button class="btn btn-primary submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
-<div class="modal-body">
-<form>
-<div class="row">
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Department <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select</option>
-<option selected value>Development</option>
-<option value="1">Finance</option>
-<option value="2">Finance and Management</option>
-<option value="3">Hr & Finance</option>
-<option value="4">ITech</option>
-</select>
+
+<!-- CSS for full-screen off-canvas -->
+<style>
+  .offcanvas-fullscreen {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+</style>
+
+
+<style>
+  .full-screen-offcanvas {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .offcanvas-body {
+    overflow-y: auto;
+    height: calc(100% - 56px); /* Adjust for header height */
+  }
+</style>
+
+
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="editScheduleOffcanvas" aria-labelledby="editScheduleOffcanvasLabel" style="height: 100vh; width: 60%;">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="editScheduleOffcanvasLabel">Edit Schedule</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Department <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option selected value>Development</option>
+              <option value="1">Finance</option>
+              <option value="2">Finance and Management</option>
+              <option value="3">Hr & Finance</option>
+              <option value="4">ITech</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Employee Name <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option selected value="1">Richard Miles</option>
+              <option value="2">John Smith</option>
+              <option value="3">Mike Litorus</option>
+              <option value="4">Wilmer Deluna</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Date <span class="text-danger">*</span></label>
+            <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Shifts <span class="text-danger">*</span></label>
+            <select class="select">
+              <option value>Select</option>
+              <option value="1">10'o clock Shift</option>
+              <option value="2">10:30 shift</option>
+              <option value="3">Daily Shift</option>
+              <option selected value="4">New Shift</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Min Start Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="06:11 am">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Start Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="06:30 am">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Max Start Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="08:12 am">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Min End Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="09:12 pm">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">End Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="09:30 pm">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Max End Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="09:45 pm">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Break Time <span class="text-danger">*</span></label>
+            <input class="form-control timepicker" type="text" value="45">
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="customCheck1">
+            <label class="form-check-label" for="customCheck1">Recurring Shift</label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Repeat Every</label>
+            <select class="select">
+              <option value>1</option>
+              <option value="1">2</option>
+              <option value="2">3</option>
+              <option value="3">4</option>
+              <option selected value="4">5</option>
+              <option value="3">6</option>
+            </select>
+            <label class="col-form-label">Week(s)</label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3 wday-box">
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="monday" class="days recurring" checked><span class="checkmark">M</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="tuesday" class="days recurring" checked><span class="checkmark">T</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="wednesday" class="days recurring" checked><span class="checkmark">W</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="thursday" class="days recurring" checked><span class="checkmark">T</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="friday" class="days recurring" checked><span class="checkmark">F</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="saturday" class="days recurring"><span class="checkmark">S</span></label>
+            <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="sunday" class="days recurring"><span class="checkmark">S</span></label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label">End On <span class="text-danger">*</span></label>
+            <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="customCheck2">
+            <label class="form-check-label" for="customCheck2">Indefinite</label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Accept Extra Hours</label>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="customSwitch3" checked>
+              <label class="form-check-label" for="customSwitch3"></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <label class="col-form-label">Publish</label>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="customSwitch4" checked>
+              <label class="form-check-label" for="customSwitch4"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-section">
+        <button class="btn btn-primary submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Employee Name <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select </option>
-<option selected value="1">Richard Miles </option>
-<option value="2">John Smith</option>
-<option value="3">Mike Litorus </option>
-<option value="4">Wilmer Deluna</option>
-</select>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Date <span class="text-danger">*</span></label>
-<div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">Shifts <span class="text-danger">*</span></label>
-<select class="select">
-<option value>Select </option>
-<option value="1">10'o clock Shift</option>
-<option value="2">10:30 shift</option>
-<option value="3">Daily Shift </option>
-<option selected value="4">New Shift</option>
-</select>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Min Start Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="06:11 am">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Start Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="06:30 am">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Max Start Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="08:12 am">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Min End Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="09:12 pm">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">End Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="09:30 pm">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Max End Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="09:45 pm">
-</div>
-</div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Break Time <span class="text-danger">*</span></label>
-<input class="form-control timepicker" type="text" value="45">
-</div>
-</div>
-<div class="col-sm-12">
-<div class="form-check">
-<input type="checkbox" class="form-check-input" id="customCheck1">
-<label class="form-check-label" for="customCheck1">Recurring Shift</label>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3">
-<label class="col-form-label">Repeat Every</label>
-<select class="select">
-<option value>1 </option>
-<option value="1">2</option>
-<option value="2">3</option>
-<option value="3">4</option>
-<option selected value="4">5</option>
-<option value="3">6</option>
-</select>
-<label class="col-form-label">Week(s)</label>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3 wday-box">
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="monday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">M</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="tuesday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">T</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="wednesday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">W</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="thursday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">T</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="friday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">F</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="saturday" class="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">S</span></label>
-<label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="sunday" class="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-8d71030f074b949cd7e74208-><span class="checkmark">S</span></label>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="input-block mb-3">
-<label class="col-form-label">End On <span class="text-danger">*</span></label>
-<div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="form-check">
-<input type="checkbox" class="form-check-input" id="customCheck2">
-<label class="form-check-label" for="customCheck2">Indefinite</label>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3">
-<label class="col-form-label">Accept Extra Hours </label>
-<div class="form-check form-switch">
-<input type="checkbox" class="form-check-input" id="customSwitch3" checked>
-<label class="form-check-label" for="customSwitch3"></label>
-</div>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="input-block mb-3">
-<label class="col-form-label">Publish </label>
-<div class="form-check form-switch">
-<input type="checkbox" class="form-check-input" id="customSwitch4" checked>
-<label class="form-check-label" for="customSwitch4"></label>
-</div>
-</div>
-</div>
-</div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Submit</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Include Bootstrap JS and dependencies (if not already included) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 
 </div>
 

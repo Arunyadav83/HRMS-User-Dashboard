@@ -14744,7 +14744,7 @@ table.table-new.dataTable>thead .sorting_desc_disabled:focus:before {
     margin: 0;
     padding: 0 0 0 30px
 }
-
+/* 
 .recent-activity .res-activity-list:after {
     content: "";
     border: 1px solid #e9e9ea;
@@ -14752,7 +14752,7 @@ table.table-new.dataTable>thead .sorting_desc_disabled:focus:before {
     top: 0;
     bottom: 0;
     left: 4px
-}
+} */
 
 .recent-activity .res-activity-list li {
     margin: 0 0 15px;
@@ -14769,7 +14769,7 @@ table.table-new.dataTable>thead .sorting_desc_disabled:focus:before {
     border-radius: 100%;
     margin: 0 0 0 15px;
     position: absolute;
-    top: 0;
+    top: 10px;
     left: -45px
 }
 
